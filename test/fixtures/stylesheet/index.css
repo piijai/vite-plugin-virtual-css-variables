@@ -1,0 +1,12 @@
+html,
+body {
+	margin: 0;
+	position: relative;
+	height: 100%;
+	width: 100%;
+	background-color: var(--color-blue-500);
+}
+
+* {
+	box-sizing: border-box;
+}
