@@ -1,0 +1,89 @@
+{
+	"name": "@mojojoejo/vite-plugin-virtual-css-variables",
+	"version": "0.0.0-development",
+	"description": "Vite plugin for importing CSS variables from a JavaScript object.",
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		}
+	},
+	"files": [
+		"./dist/*"
+	],
+	"scripts": {
+		"prepare": "husky install",
+		"prepublishOnly": "pnpm run build",
+		"build": "tsup",
+		"build:dev": "pnpm run build --watch",
+		"test": "vitest run",
+		"test:coverage": "pnpm run test --coverage",
+		"test:dev": "vitest watch",
+		"test:ui": "vitest --ui",
+		"lint": "eslint . --ext js,ts,cjs,mjs",
+		"lint:fix": "pnpm run lint --fix",
+		"format": "prettier './**/*.{js,ts,cjs,mjs}'",
+		"format:check": "pnpm run format --check",
+		"format:fix": "pnpm run format --write",
+		"release": "semantic-release"
+	},
+	"lint-staged": {
+		"./**/*.{js,ts,cjs,mjs}": [
+			"pnpm run lint:fix"
+		],
+		"./**/*.{js,ts,cjs,mjs,json}": [
+			"pnpm run format:fix"
+		]
+	},
+	"keywords": [
+		"CSS",
+		"CSS Custom Properties",
+		"CSS Variables",
+		"Virtual Module",
+		"Vite",
+		"Vite Plugin"
+	],
+	"author": {
+		"name": "Joe Stanley",
+		"url": "https://joeknows.dev"
+	},
+	"license": "MIT",
+	"peerDependencies": {
+		"vite": "^3 || ^4"
+	},
+	"devDependencies": {
+		"@semantic-release/git": "^10.0.1",
+		"@types/lodash.merge": "^4.6.7",
+		"@typescript-eslint/eslint-plugin": "^5.57.1",
+		"@typescript-eslint/parser": "^5.57.1",
+		"@vitest/coverage-c8": "^0.29.8",
+		"@vitest/ui": "^0.30.0",
+		"eslint": "^8.38.0",
+		"eslint-plugin-filenames": "^1.3.2",
+		"eslint-plugin-import": "^2.27.5",
+		"husky": "^8.0.3",
+		"lint-staged": "^13.2.1",
+		"prettier": "^2.8.7",
+		"prettier-cli": "^0.1.0",
+		"rollup": "^3.20.2",
+		"semantic-release": "^21.0.1",
+		"tsup": "^6.7.0",
+		"typescript": "^5.0.4",
+		"vite": "^4.2.1",
+		"vitest": "^0.29.8"
+	},
+	"dependencies": {
+		"lodash.merge": "^4.6.2"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/mojojoejo/vite-plugin-virtual-css-variables.git"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
