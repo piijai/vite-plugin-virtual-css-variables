@@ -103,6 +103,56 @@ export default {
 // }
 ```
 
+### Nested variable keys
+
+For nested variable maps, subsequent keys will be concatenated with a separator
+string, defaulting to "-". A `default` key can be used when including child
+keys to provide a "default" value, without the separator string or a child key.
+
+```html
+<!-- index.html -->
+<html>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="src/variables.ts"></script>
+  </body>
+</html>
+```
+
+```ts
+// src/variables.ts
+import "virtual:variables-module.css";
+```
+
+```ts
+// vite.config.ts
+import pluginCssVariables from "@mojojoejo/vite-plugin-virtual-css-variables";
+
+export default {
+  plugins: [
+    pluginCssVariables({
+      moduleId: "virtual:variables-module.css",
+      variables: {
+        color: {
+          blue: {
+            default: "#0000FF",
+            500: "#0668E1",
+          }
+          red: "#FF0000",
+        },
+      },
+    }),
+  ],
+};
+
+// => index.css
+// :root {
+//   --color-blue: #0000FF;
+//   --color-blue-500: #0668E1;
+//   --color-red: #FF0000;
+// }
+```
+
 ### Multiple CSS variable objects
 
 ```html
